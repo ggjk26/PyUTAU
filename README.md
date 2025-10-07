@@ -7,7 +7,6 @@ Features:
  - Able to normally import UTAU Voice Libraries (Testing "OpenUTAU用日本語統合ライブラリー", can runs fluently)
  - Edit & Create Lyrics
  - As a Python package, you must place it in the root directory of your project.
- - You needn't install any packages from pip, just playing music will have another packages
 
 Start Page
 ```python
