@@ -28,7 +28,7 @@ except ImportError:
         raise
 
 class PyUTAUComponent(ttk.Frame):
-    """完全重写的 UTAU 组件 - 支持多音轨、长时长和多个音源库"""
+    """UTAU 组件"""
     
     def __init__(self, parent, **kwargs):
         super().__init__(parent, **kwargs)
@@ -841,3 +841,4 @@ class PyUTAUComponent(ttk.Frame):
                 except:
                     pass
         super().destroy()
+
