@@ -44,3 +44,12 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+Requirement Package
+numpy>=1.21.0
+librosa>=0.9.0
+scipy>=1.7.0
+Pillow>=9.0.0
+chardet>=5.0.0
+sounddevice>=0.4.5
+pydub>=0.25.1
