@@ -15,7 +15,7 @@ class ProjectSettings:
     max_tracks: int = 16
 
 class Project:
-    """扩展的项目类 - 支持多音轨和长时长"""
+    """扩展的项目类"""
     
     def __init__(self, name: str, settings: ProjectSettings = None):
         self.name = name
@@ -156,3 +156,4 @@ class Project:
             return project
         else:
             raise ValueError(f"未知模板: {template_name}")
+
