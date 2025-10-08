@@ -40,7 +40,7 @@ class VoiceSample:
                 self.original_length = self.sample_rate
     
     def get_pitch_shifted(self, target_pitch: int) -> np.ndarray:
-        """获取移调后的样本 - 改进版本"""
+        """获取移调后的样本"""
         self.load_sample()
         semitones = target_pitch - self.pitch
         
@@ -61,7 +61,7 @@ class VoiceSample:
             return self.sample_data.copy()
 
 class VoiceLibrary:
-    """音源库管理器 - 修复版本"""
+    """音源库管理器"""
     
     def __init__(self, library_path: Path):
         self.library_path = Path(library_path)
@@ -99,7 +99,7 @@ class VoiceLibrary:
         print(f"音源库加载完成，共 {len(self.samples)} 种歌词")
     
     def load_character_info(self):
-        """加载角色信息 - 修复版本，支持子目录搜索"""
+        """加载角色信息"""
         # 尝试不同的角色信息文件
         character_files = [
             "character.yaml", "character.yml",  # YAML格式优先
@@ -216,7 +216,7 @@ class VoiceLibrary:
             self.fallback_yaml_parsing(yaml_path)
     
     def fallback_yaml_parsing(self, yaml_path: Path):
-        """YAML解析失败时的后备方案 - 简单文本解析"""
+        """YAML解析失败时的后备方案"""
         # 尝试多种编码
         encodings = ['utf-8', 'shift_jis', 'cp932', 'utf-16']
         for encoding in encodings:
@@ -400,7 +400,7 @@ class VoiceLibrary:
             print(f"添加样本失败 {audio_file}: {e}")
     
     def extract_pitch_from_filename(self, filename: str) -> int:
-        """从文件名提取音高 - 改进版本"""
+        """从文件名提取音高"""
         # 更全面的音高模式匹配
         pitch_patterns = [
             # 低音区
@@ -447,7 +447,7 @@ class VoiceLibrary:
         return 60
     
     def extract_lyric_from_filename(self, filename: str) -> str:
-        """从文件名提取歌词 - 改进版本"""
+        """从文件名提取歌词"""
         # 移除常见的音高标记和数字
         import re
         
@@ -503,7 +503,7 @@ class VoiceLibrary:
         return filename[:2] if len(filename) >= 2 else filename
     
     def get_best_sample(self, lyric: str, target_pitch: int) -> Optional[VoiceSample]:
-        """获取最适合指定歌词和音高的样本 - 改进版本"""
+        """获取最适合指定歌词和音高的样本"""
         if lyric not in self.samples or not self.samples[lyric]:
             # 尝试找到相似的歌词
             similar_lyrics = self.find_similar_lyrics(lyric)
@@ -614,3 +614,4 @@ class VoiceLibrary:
             for samples in self.samples.values():
                 for sample in samples:
                     sample.load_sample()
+
