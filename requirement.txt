@@ -1,0 +1,7 @@
+numpy
+librosa
+scipy
+Pillow
+chardet
+sounddevice
+pydub
