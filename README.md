@@ -53,3 +53,7 @@ Pillow>=9.0.0
 chardet>=5.0.0
 sounddevice>=0.4.5
 pydub>=0.25.1
+
+Deepseek-assisted code writing, If you want to get full content, please wait for offical version (0.1.0 and later) in release.
+If you want use it in different languages, you can push a branch and coding by yourself.
+This project is working in progress. NOW PROGRESS: EARLY TESTING
