@@ -18,7 +18,7 @@ except ImportError:
     from .library_adapter import LibraryAdapter
 
 class SynthesisEngine:
-    """扩展的合成引擎 - 支持多音轨和不同音源库"""
+    """合成引擎"""
     
     def __init__(self, sample_rate=48000):
         self.sample_rate = sample_rate
@@ -28,7 +28,7 @@ class SynthesisEngine:
         self.library_adapter = LibraryAdapter()
     
     def load_voice_library(self, library_path: str) -> bool:
-        """加载音源库到引擎 - 支持多格式"""
+        """加载音源库到引擎"""
         try:
             if library_path not in self.voice_libraries:
                 # 使用通用适配器加载声库
@@ -56,7 +56,7 @@ class SynthesisEngine:
         return self.voice_libraries.get(library_path)
     
     def synthesize_project(self, project: Project) -> np.ndarray:
-        """合成整个项目 - 多音轨混合"""
+        """合成整个项目"""
         print(f"开始合成项目 '{project.name}'，包含 {len(project.tracks)} 个音轨")
         
         # 计算项目总时长
@@ -530,3 +530,4 @@ class SynthesisEngine:
             logger.addHandler(handler)
             logger.setLevel(logging.INFO)
         return logger
+
