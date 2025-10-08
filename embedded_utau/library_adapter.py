@@ -10,7 +10,7 @@ from .voice_library import VoiceLibrary, VoiceSample
 from .library_detector import LibraryDetector
 
 class LibraryAdapter:
-    """通用声库适配器 - 支持多种声库格式"""
+    """通用声库适配器"""
     
     def __init__(self):
         self.supported_formats = ["utau", "vocaloid", "cevio", "generic_audio"]
@@ -66,9 +66,9 @@ class LibraryAdapter:
             if library_type == "utau":
                 return self._load_utau_library(dir_path), "成功加载 UTAU 声库"
             elif library_type == "vocaloid":
-                return self._load_vocaloid_library(dir_path), "成功加载 Vocaloid 声库"
+                return self._load_vocaloid_library(dir_path), "成功加载 /// 声库"
             elif library_type == "cevio":
-                return self._load_cevio_library(dir_path), "成功加载 CeVIO 声库"
+                return self._load_cevio_library(dir_path), "成功加载 /// 声库"
             elif library_type == "generic_audio":
                 return self._load_generic_audio_library(dir_path), "成功加载通用音频库"
             else:
@@ -79,110 +79,7 @@ class LibraryAdapter:
     def _load_utau_library(self, dir_path: Path) -> VoiceLibrary:
         """加载 UTAU 声库 - 使用现有的 VoiceLibrary"""
         return VoiceLibrary(dir_path)
-    
-    def _load_vocaloid_library(self, dir_path: Path) -> VoiceLibrary:
-        """加载 Vocaloid 声库"""
-        # 创建临时的 UTAU 兼容结构
-        temp_utau_dir = tempfile.mkdtemp(prefix="vocaloid_to_utau_")
-        self.temp_dirs[str(dir_path)] = temp_utau_dir
         
-        print(f"转换 Vocaloid 声库到 UTAU 格式: {temp_utau_dir}")
-        
-        # 复制所有音频文件
-        audio_extensions = ['.wav', '.mp3', '.flac', '.ogg']
-        for ext in audio_extensions:
-            for audio_file in dir_path.rglob(f"*{ext}"):
-                # 复制到临时目录
-                target_file = Path(temp_utau_dir) / audio_file.name
-                shutil.copy2(audio_file, target_file)
-        
-        # 创建基本的 oto.ini
-        self._create_vocaloid_oto_ini(dir_path, temp_utau_dir)
-        
-        # 复制角色信息
-        self._copy_character_info(dir_path, temp_utau_dir)
-        
-        # 使用标准的 VoiceLibrary 加载
-        return VoiceLibrary(Path(temp_utau_dir))
-    
-    def _load_cevio_library(self, dir_path: Path) -> VoiceLibrary:
-        """加载 CeVIO 声库"""
-        # 创建临时的 UTAU 兼容结构
-        temp_utau_dir = tempfile.mkdtemp(prefix="cevio_to_utau_")
-        self.temp_dirs[str(dir_path)] = temp_utau_dir
-        
-        print(f"转换 CeVIO 声库到 UTAU 格式: {temp_utau_dir}")
-        
-        # 复制所有音频文件
-        audio_extensions = ['.wav', '.mp3', '.flac', '.ogg']
-        for ext in audio_extensions:
-            for audio_file in dir_path.rglob(f"*{ext}"):
-                # 复制到临时目录
-                target_file = Path(temp_utau_dir) / audio_file.name
-                shutil.copy2(audio_file, target_file)
-        
-        # 创建基本的 oto.ini
-        self._create_cevio_oto_ini(dir_path, temp_utau_dir)
-        
-        # 复制角色信息
-        self._copy_character_info(dir_path, temp_utau_dir)
-        
-        # 使用标准的 VoiceLibrary 加载
-        return VoiceLibrary(Path(temp_utau_dir))
-    
-    def _load_generic_audio_library(self, dir_path: Path) -> VoiceLibrary:
-        """加载通用音频库"""
-        # 创建临时的 UTAU 兼容结构
-        temp_utau_dir = tempfile.mkdtemp(prefix="generic_to_utau_")
-        self.temp_dirs[str(dir_path)] = temp_utau_dir
-        
-        print(f"转换通用音频库到 UTAU 格式: {temp_utau_dir}")
-        
-        # 复制所有音频文件
-        audio_extensions = ['.wav', '.mp3', '.flac', '.ogg']
-        for ext in audio_extensions:
-            for audio_file in dir_path.rglob(f"*{ext}"):
-                # 复制到临时目录
-                target_file = Path(temp_utau_dir) / audio_file.name
-                shutil.copy2(audio_file, target_file)
-        
-        # 创建基本的 oto.ini
-        self._create_generic_oto_ini(dir_path, temp_utau_dir)
-        
-        # 创建基本的角色信息
-        self._create_generic_character_info(dir_path, temp_utau_dir)
-        
-        # 使用标准的 VoiceLibrary 加载
-        return VoiceLibrary(Path(temp_utau_dir))
-    
-    def _create_vocaloid_oto_ini(self, source_dir: Path, target_dir: str):
-        """为 Vocaloid 声库创建 oto.ini"""
-        oto_path = Path(target_dir) / "oto.ini"
-        
-        audio_files = list(Path(target_dir).glob("*.wav")) + list(Path(target_dir).glob("*.mp3"))
-        
-        with open(oto_path, 'w', encoding='utf-8') as f:
-            for audio_file in audio_files:
-                # 从文件名推断参数
-                filename = audio_file.stem
-                lyric = self._extract_lyric_from_filename(filename)
-                
-                # 简单的 oto.ini 条目
-                f.write(f"{audio_file.name}={lyric}\n")
-    
-    def _create_cevio_oto_ini(self, source_dir: Path, target_dir: str):
-        """为 CeVIO 声库创建 oto.ini"""
-        oto_path = Path(target_dir) / "oto.ini"
-        
-        audio_files = list(Path(target_dir).glob("*.wav")) + list(Path(target_dir).glob("*.mp3"))
-        
-        with open(oto_path, 'w', encoding='utf-8') as f:
-            for audio_file in audio_files:
-                filename = audio_file.stem
-                lyric = self._extract_lyric_from_filename(filename)
-                
-                f.write(f"{audio_file.name}={lyric}\n")
-    
     def _create_generic_oto_ini(self, source_dir: Path, target_dir: str):
         """为通用音频库创建 oto.ini"""
         oto_path = Path(target_dir) / "oto.ini"
@@ -252,3 +149,4 @@ class LibraryAdapter:
                 except:
                     pass
         self.temp_dirs.clear()
+
