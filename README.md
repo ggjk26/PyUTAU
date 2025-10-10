@@ -8,6 +8,12 @@ Features:
  - Edit & Create Lyrics
  - As a Python package, you must place it in the root directory of your project.
 
+fUTURE PLAN
+ - Throw away tkinter and use PyQt6
+ - Rework at synthesis engine to play more fluent CVVC Japanese Voicebank
+ - Insider Voicebank maker
+ - Setting on the top of window
+
 Start Page
 ```python
 from embedded_utau import PyUTAUComponent
@@ -45,8 +51,9 @@ if __name__ == "__main__":
     main()
 ```
 
-Deepseek-assisted code writing, If you want to get full content, please wait for offical version (0.1.0 and later) in release.
+Deepseek / ChatGPT -assisted code writing, If you want to get full content, please wait for offical version (0.1.0 and later) in release.
 
 If you want use it in different languages, you can push a branch and coding by yourself.
 
 This project is working in progress. NOW PROGRESS: EARLY TESTING
+
