@@ -14,6 +14,9 @@ fUTURE PLAN
  - Insider Voicebank maker
  - Setting on the top of window
 
+PyQt6 rebuilding work is nearly complete. But it has lots of bugs such as voicebanks cannot check correctly and ust project file load failed./n
+So, please wait it when it tested properly and can run in lowest environment requirement
+
 Start Page
 ```python
 from embedded_utau import PyUTAUComponent
