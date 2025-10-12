@@ -1,23 +1,24 @@
 # PyUTAU
-A Expandable plugin (Package) for python language project. Brought back the basic features of the UTAU software in Python.
+A Expandable plugin (Package) for python language project. Brought back the basic features of the UTAU software in Python. 
 
-Pre-Release Version only support Chinese (Simplified), if you want to use it in different languages (such as English or Japanese), please wait for the official release (which may take some time).
+Pre-Release Version only support Chinese (Simplified), if you want to use it in different languages (such as English or Japanese), please wait for the official release (which may take some time). 
 
-Features:
+## Features
  - Able to normally import UTAU Voice Libraries (Testing "OpenUTAU用日本語統合ライブラリー", can runs fluently)
  - Edit & Create Lyrics
  - As a Python package, you must place it in the root directory of your project.
 
-fUTURE PLAN
+## FUTURE PLAN
  - Throw away tkinter and use PyQt6
  - Rework at synthesis engine to play more fluent CVVC Japanese Voicebank
  - Insider Voicebank maker
  - Setting on the top of window
 
-PyQt6 rebuilding work is nearly complete. But it has lots of bugs such as voicebanks cannot check correctly and ust project file load failed./n
-So, please wait it when it tested properly and can run in lowest environment requirement
+PyQt6 rebuilding work is nearly complete. But it has lots of bugs such as voicebanks cannot check correctly and ust project file load failed. <br>
+So, please wait it when it tested properly and can run in lowest environment requirement <br>
+dont try to git there source code because it isn't completely and it less some key code files because some technical problems<br>
 
-Start Page
+## Start Page
 ```python
 from embedded_utau import PyUTAUComponent
 from tkinter import ttk, filedialog, messagebox
@@ -54,9 +55,7 @@ if __name__ == "__main__":
     main()
 ```
 
-Deepseek / ChatGPT -assisted code writing, If you want to get full content, please wait for offical version (0.1.0 and later) in release.
-
-If you want use it in different languages, you can push a branch and coding by yourself.
-
-This project is working in progress. NOW PROGRESS: EARLY TESTING
+Deepseek / ChatGPT -assisted code writing, If you want to get full content, please wait for offical version (0.1.0 and later) in release. <br>
+If you want use it in different languages, you can push a branch and coding by yourself. <br>
+This project is working in progress. NOW PROGRESS: EARLY TESTING <br>
 
