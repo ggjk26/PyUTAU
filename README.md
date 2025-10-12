@@ -11,11 +11,11 @@ Pre-Release Version only support Chinese (Simplified), if you want to use it in 
 ## FUTURE PLAN
  - Throw away tkinter and use PyQt6
  - Rework at synthesis engine to play more fluent CVVC Japanese Voicebank
- - Insider Voicebank maker
+ - Embedded Voicebank maker
  - Setting on the top of window
 
 PyQt6 rebuilding work is nearly complete. But it has lots of bugs such as voicebanks cannot check correctly and ust project file load failed. <br>
-So, please wait it when it tested properly and can run in lowest environment requirement <br>
+So, please wait it when it tested properly and can run in lowest environment requirement. <br>
 dont try to git there source code because it isn't completely and it less some key code files because some technical problems<br>
 
 ## Start Page
