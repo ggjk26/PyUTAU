@@ -17,6 +17,7 @@ Pre-Release Version only support Chinese (Simplified), if you want to use it in 
 PyQt6 rebuilding work is nearly complete. But it has lots of bugs such as voicebanks cannot check correctly and ust project file load failed. <br>
 So, please wait it when it tested properly and can run in lowest environment requirement. <br>
 dont try to git there source code because it isn't completely and it less some key code files because some technical problems. <br>
+If these problems were solved, this text will delete or tip it "Legacy" or "Outdated Plan(Completed)"
 
 ## Start Page
 ```python
@@ -57,5 +58,5 @@ if __name__ == "__main__":
 
 Deepseek / ChatGPT -assisted code writing, If you want to get full content, please wait for offical version (0.1.0 and later) in release. <br>
 If you want use it in different languages, you can push a branch and coding by yourself. <br>
-This project is working in progress. NOW PROGRESS: EARLY TESTING <br>
+This project is working in progress. NOW PROGRESS: CLOSED ALPHA <br>
 
