@@ -6,9 +6,9 @@
  
 ## About PyUTAU
 PyUTAU is a Expandable Embedded Package for python project.<br>
-A based Python Core, and rebuild the editor. Althoght it can import UST file, but not support midi & USTX project file import
-This project is not available because it haven't fully support main languages and have some hard to fixed problems
-If you want another features, you can push a issue
+A based Python Core, and rebuild the editor. Althoght it can import UST file, but not support midi & USTX project file import<br>
+This project is not available because it haven't fully support main languages and have some hard to fixed problems<br>
+If you want another features, you can push a issue<br>
 BASED PyQt6
 
 ## Competitable
@@ -85,8 +85,10 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-## OpenSource LICENSE
-NOW NOT AVAILABLE SO NO LICENSE ITO USE
-CODES HERE WERE LEGACY TKINTER VERSION AND LESS ON SOME KEY FILES
+## Build By Yourself
+Comming soon. We support you push a branch or rewrite it and independent it to be a new project!
 
+## OpenSource LICENSE
+NOW NOT AVAILABLE SO NO LICENSE TO USE<br>
+CODES HERE WERE LEGACY TKINTER VERSION AND LESS ON SOME KEY FILES
 
