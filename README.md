@@ -1,62 +1,92 @@
 # PyUTAU
-A Expandable plugin (Package) for python language project. Brought back the basic features of the UTAU software in Python. 
+## Special Thanks
+ - [1ndex_qwq](https://steamcommunity.com/profiles/76561199806244588 "Third-Party Supporter")
+ - [Feng](https://steamcommunity.com/profiles/76561199511541101 "Third-Party Supporter")
+ - [OpenUTAU](https://openutau.com "Offical Independent Version")
+ 
+## About PyUTAU
+PyUTAU is a Expandable Embedded Package for python project.<br>
+A based Python Core, and rebuild the editor. Althoght it can import UST file, but not support midi & USTX project file import
+This project is not available because it haven't fully support main languages and have some hard to fixed problems
+If you want another features, you can push a issue
+BASED PyQt6
 
-Pre-Release Version only support Chinese (Simplified), if you want to use it in different languages (such as English or Japanese), please wait for the official release (which may take some time). 
+## Competitable
+### Suggest Platform
+ - Python 3.9.0 and later
 
-## Features
- - Able to normally import UTAU Voice Libraries (Testing "OpenUTAU用日本語統合ライブラリー", can runs fluently)
- - Edit & Create Lyrics
- - As a Python package, you must place it in the root directory of your project.
+### Singer Support
+ - UTAU
 
-## FUTURE PLAN
- - Throw away tkinter and use PyQt6
- - Rework at synthesis engine to play more fluent CVVC Japanese Voicebank
- - Embedded Voicebank maker
- - Setting on the top of window
-
-PyQt6 rebuilding work is nearly complete. But it has lots of bugs such as voicebanks cannot check correctly and ust project file load failed. <br>
-So, please wait it when it tested properly and can run in lowest environment requirement. <br>
-dont try to git there source code because it isn't completely and it less some key code files because some technical problems. <br>
-If these problems were solved, this text will delete or tip it "Legacy" or "Outdated Plan(Completed)"
+## fast start
+Now I'll fix up some bugs so I haven't upload any release on it and wait it until it have a bugless pre-release version
 
 ## Start Page
+PyQt6 Code
 ```python
-from embedded_utau import PyUTAUComponent
-from tkinter import ttk, filedialog, messagebox
-from pathlib import Path
-
 def main():
-    root = tk.Tk()
-    root.title("PyUtau - Embedded UTAU Tone Synthesizer")
-    root.geometry("900x600")
+    print("=" * 50)
+    print("PyUTAU Studio Plugin")
+    print("=" * 50)
     
-    utau_component = PyUTAUComponent(root)
-    utau_component.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+    # add embedded_utau path
+    current_dir = Path(__file__).parent
+    sys.path.insert(0, str(current_dir))
+    print(f"Work Dir: {current_dir}")
     
-    status_var = tk.StringVar(value="Ready")
-    status_bar = tk.Label(root, textvariable=status_var, relief=tk.SUNKEN, anchor=tk.W)
-    status_bar.pack(side=tk.BOTTOM, fill=tk.X)
-    
-    def update_status(message):
-        status_var.set(message)
-    
-    control_frame = tk.Frame(root)
-    control_frame.pack(fill=tk.X, padx=10, pady=5)
-    
-    tk.Button(control_frame, text="Testing Playing", 
-              command=lambda: update_status("Testing Play Functions")).pack(side=tk.LEFT, padx=5)
-    tk.Button(control_frame, text="clean notes", 
-              command=lambda: [utau_component.clear_notes(), update_status("All notes have been cleared")]).pack(side=tk.LEFT, padx=5)
-    tk.Button(control_frame, text="About", 
-              command=lambda: update_status("PyUtau - Embedded UTAU Tone Synthesizer")).pack(side=tk.RIGHT, padx=5)
-    
-    root.mainloop()
+    try:
+        from PyQt6.QtWidgets import QApplication
+        
+        import embedded_utau.main_window as main_window_module
+        
+        app = QApplication(sys.argv)
+        app.setApplicationName("PyUTAU Studio")
+        app.setApplicationVersion("0.1.0")
+        
+        window = main_window_module.MainWindow()
+        window.show()
+        
+        print("=" * 50)
+        print("Plugin Launched!")
+        print("=" * 50)
+        
+        return app.exec()
+        
+    except Exception as e:
+        print(f"✗ Setup Failed!: {e}")
+        import traceback
+        traceback.print_exc()
+        
+        print("\nTry again with another ways...")
+        try:
+            from PyQt6.QtWidgets import QApplication
+
+            class SimpleMainWindow(QApplication):
+                def __init__(self):
+                    super().__init__(sys.argv)
+                    from PyQt6.QtWidgets import QMainWindow, QLabel
+                    self.window = QMainWindow()
+                    self.window.setWindowTitle("PyUTAU Studio - debug mode")
+                    self.window.setGeometry(100, 100, 800, 600)
+                    label = QLabel("PyUTAU Studio\n\nBecuse of Some Problem, debug mode is running.\nPlease check consle output information.")
+                    label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+                    self.window.setCentralWidget(label)
+                    self.window.show()
+            
+            simple_app = SimpleMainWindow()
+            return simple_app.exec()
+            
+        except Exception as e2:
+            print(f"Setup Failed, Please push a issue with your consle error information (deleted private information such as project path and structure): {e2}")
+            input("Press 'Enter' to exit this plugin...")
+            return 1
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
 ```
 
-Deepseek / ChatGPT -assisted code writing, If you want to get full content, please wait for offical version (0.1.0 and later) in release. <br>
-If you want use it in different languages, you can push a branch and coding by yourself. <br>
-This project is working in progress. NOW PROGRESS: CLOSED ALPHA <br>
+## OpenSource LICENSE
+NOW NOT AVAILABLE SO NO LICENSE ITO USE
+CODES HERE WERE LEGACY TKINTER VERSION AND LESS ON SOME KEY FILES
+
 
