@@ -1,4 +1,8 @@
 # PyUTAU
+#I WILL OPEN ANOTHER PROJECT TO CONTIUNE THIS PROJECT BECAUSE IT WAS UNSUPPORT WITH ANYONE
+#IT IS USELESS BECAUSE I DON'T KNOW WHEN IT IS LOST ITS CORE FUNCTION --- EMBEDDED
+#You can wait for another version of this. If I can, I will open a same name stroage to rebuild it.
+
 ## Special Thanks
  - [1ndex_qwq](https://steamcommunity.com/profiles/76561199806244588 "Third-Party Supporter")
  - [Feng](https://steamcommunity.com/profiles/76561199511541101 "Third-Party Supporter")
